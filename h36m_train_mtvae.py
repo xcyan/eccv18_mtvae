@@ -48,7 +48,7 @@ flags.DEFINE_integer('use_recurrent_dropout', 0, '')
 flags.DEFINE_float('recurrent_dropout_prob', 1.0, '')
 #
 flags.DEFINE_float('keypoint_weight', 1, '')
-flags.DEFINE_integer('velocity_length', 3, '')
+flags.DEFINE_integer('velocity_length', 8, '')
 flags.DEFINE_float('velocity_weight', 5.0, '')
 flags.DEFINE_float('velocity_start_weight', 1e-5, '')
 flags.DEFINE_float('velocity_decay_rate', 0.99995, '')
@@ -77,7 +77,6 @@ flags.DEFINE_integer('task', 0, '')
 FLAGS = flags.FLAGS
 
 def main(_):
-  print(FLAGS.z_commitment_weight)
   train_dir = os.path.join(FLAGS.checkpoint_dir, FLAGS.model_name, 'train')
   utils.force_mkdir(os.path.join(FLAGS.checkpoint_dir, FLAGS.model_name))
   utils.force_mkdir(train_dir)

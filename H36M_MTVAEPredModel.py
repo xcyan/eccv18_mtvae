@@ -10,7 +10,7 @@ from nets import h36m_mtvae_factory as model_factory
 
 slim = tf.contrib.slim
 
-class H36M_MTVAEPredModel(BasePredModel):
+class H36M_MTVAEPredModel(BasePredModel.H36M_BasePredModel):
   """Defines MTVAE Prediction Model."""
   
   def __init__(self, params):
@@ -47,7 +47,7 @@ class H36M_MTVAEPredModel(BasePredModel):
         inputs['fut_lens'], curr_velocity_weight * params.keypoint_weight,
         'post_velocity_loss', params.velocity_length)
       velocity_loss += losses.get_velocity_loss(
-        inputs['last_landmarks'], inputs['fut_landmarks'], outputs['sfnn_fut_landmarks'],
+        inputs['last_landmarks'], inputs['fut_landmarks'], outputs['cycle_fut_landmarks'],
         inputs['fut_lens'], curr_velocity_weight * params.keypoint_weight,
         'prior_velocity_loss', params.velocity_length)
       loss_dict['velocity_loss'] = velocity_loss

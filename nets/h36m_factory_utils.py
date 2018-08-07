@@ -3,8 +3,8 @@
 import tensorflow as tf
 
 from factory_utils import get_network, get_rnn_cell
-import h36m_seq_encoder
-import h36m_seq_decoder
+import h36m_seq_encoder as keypoint_seq_encoder
+import h36m_seq_decoder as keypoint_seq_decoder
 import rnn
 import numpy as np
 import random

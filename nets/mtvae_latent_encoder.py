@@ -6,6 +6,8 @@ import rnn
 
 from layer_utils import layer_norm, resnet_block
 
+slim = tf.contrib.slim
+
 def model(his_style, fut_style, use_prior, params, is_training):
   quantity = his_style.get_shape().as_list()[0]
   embed_dim = params.embed_dim
