@@ -24,6 +24,7 @@ def add_fn(net, prev_input, params):
     net, out_dim, activation_fn=None, normalizer_fn=None)
   return net
 
+# TODO(xcyan): verify concat_fn.
 def get_interaction_fn(mode):
   if mode == 'add':
     return add_fn

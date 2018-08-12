@@ -5,16 +5,19 @@ import tensorflow as tf
 from factory_utils import get_network, get_rnn_cell
 import h36m_seq_encoder as keypoint_seq_encoder
 import h36m_seq_decoder as keypoint_seq_decoder
+import h36m_singleseq_encoder as keypoint_singleseq_encoder
 import rnn
 import numpy as np
 import random
 
 ENC_FN = 'keypoint_seq_encoder'
 FUT_DEC_FN = 'keypoint_seq_decoder'
+SINGLESEQ_ENC_FN = 'keypoint_singleseq_encoder'
 
 NAME_TO_NETS = {
   ENC_FN: keypoint_seq_encoder,
   FUT_DEC_FN: keypoint_seq_decoder,
+  SINGLESEQ_ENC_FN: keypoint_singleseq_encoder,
 } 
 
 NAME_TO_RNNCELL = {
@@ -24,6 +27,46 @@ NAME_TO_RNNCELL = {
 
 def _get_network(name):
   return get_network(name, NAME_TO_NETS)
+
+
+def get_singleseq_encoding_model(inputs, params, is_training, reuse):
+  """Factory function to retrieve encoder network model."""
+  enc_cell_fn = NAME_TO_RNNCELL[params.enc_model]
+  
+  recurrent_dropout_prob = 1.0
+  if is_training:
+    recurrent_dropout_prob = params.recurrent_dropout_prob
+  
+  assert (not params.use_bidirection_lstm)
+  enc_cell = get_rnn_cell(
+    enc_cell_fn, params.enc_rnn_size,
+    use_dropout=is_training and params.use_recurrent_dropout,
+    keep_prob=recurrent_dropout_prob, is_bidir=False)
+  
+  singleseq_encoder = _get_network(SINGLESEQ_ENC_FN)
+  
+  outputs = dict()
+  ##############
+  ## encoding ##
+  ##############
+  with tf.variable_scope('seq_enc', reuse=reuse):
+    tmp_outputs = singleseq_encoder(
+      None, inputs['his_landmarks'], inputs['his_lens'],
+      enc_cell, params, is_training=is_training)
+  enc_state = tmp_outputs['states']
+  if hasattr(params, 'content_dim'):
+    outputs['his_content'] = tmp_outputs['content']
+    outputs['his_style'] = tmp_outputs['style']
+  #
+  with tf.variable_scope('seq_enc', reuse=True):
+    tmp_outputs = singleseq_encoder(
+      enc_state, inputs['fut_landmarks'], inputs['fut_lens'],
+      enc_cell, params, is_training=is_training)
+  if hasattr(params, 'content_dim'):
+    outputs['fut_content'] = tmp_outputs['content']
+    outputs['fut_style'] = tmp_outputs['style']
+  return outputs
+
 
 def get_seq_encoding_model(inputs, params, is_training, reuse):
   """Factory function to retrieve encoder network model."""
