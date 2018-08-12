@@ -10,11 +10,11 @@ from nets import h36m_mtvae_factory as model_factory
 
 slim = tf.contrib.slim
 
-class H36M_MTVAEPredModel(BasePredModel.H36M_BasePredModel):
+class MTVAEPredModel(BasePredModel.BasePredModel):
   """Defines MTVAE Prediction Model."""
   
   def __init__(self, params):
-    super(H36M_MTVAEPredModel, self).__init__(params)
+    super(MTVAEPredModel, self).__init__(params)
 
   def get_model_fn(self, is_training, use_prior, reuse):
     params = self._params

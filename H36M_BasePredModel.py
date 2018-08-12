@@ -38,7 +38,7 @@ def _get_data_from_provider(inputs, batch_size,
   return outputs
 
   
-class H36M_BasePredModel(object):
+class BasePredModel(object):
   """Defines Human3.6M motion generation model."""
 
   def __init__(self, params):
