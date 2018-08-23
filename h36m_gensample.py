@@ -5,6 +5,7 @@ import numpy as np
 import tensorflow as tf
 
 from tensorflow import app
+from H36M_VAEPredModel import VAEPredModel
 from H36M_MTVAEPredModel import MTVAEPredModel
 
 import h36m_input as input_generator
@@ -48,18 +49,22 @@ HIS_KEYFRAMES = [0, 7, 15]
 FUT_KEYFRAMES = [0, 3, 15, 31, 63]
 
 MODEL_SPECS = {
+  'VAE': VAE,
   'MTVAE': MTVAE,
 }
 
 MODEL_TO_NAME = {
+  'VAE': 'Vanill VAE',
   'MTVAE': 'Motion Transformation VAE',
 }
 
 MODEL_TO_CLASS = {
+  'VAE': VAEPredModel,
   'MTVAE': MTVAEPredModel,
 }
 
 MODEL_TO_SCOPE = {
+  'VAE': ['seq_enc', 'fut_dec', 'latent_enc', 'latent_dec'],
   'MTVAE': ['seq_enc', 'fut_dec', 'latent_enc', 'latent_dec'],
 }
 
@@ -132,7 +137,7 @@ def main(_):
   params = add_attributes(FLAGS, MODEL_SPECS[FLAGS.model_version])
   model_dir = os.path.join(FLAGS.checkpoint_dir, params.model_name, 'train')
   img_dir = os.path.join(params.checkpoint_dir, 'gensample_comparison', 'imgs')
-  log_dir = os.path.join(params.checkpoint_dir, params.model_version)
+  log_dir = os.path.join(params.checkpoint_dir, 'gensample_comparison', params.model_version)
   if (params.model_version in ['PredLSTM']):
     params.batch_size = 1
   assert os.path.isdir(model_dir)

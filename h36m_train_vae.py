@@ -1,11 +1,11 @@
-"""Contains training plan for sequence generation using MTVAE on Human3.6M."""
+"""Contains training plan for sequence generation using Vanilla VAE on Human3.6M."""
 
 import os
 import numpy as np
 import tensorflow as tf
 
 from tensorflow import app
-from H36M_MTVAEPredModel import MTVAEPredModel
+from H36M_VAEPredModel import VAEPredModel
 import utils
 import copy
 
@@ -35,7 +35,6 @@ flags.DEFINE_integer('use_prior', 0, '')
 flags.DEFINE_string('enc_model', 'ln_lstm', '')
 flags.DEFINE_string('dec_model', 'ln_lstm', '')
 flags.DEFINE_integer('use_bidirection_lstm', 0, '')
-flags.DEFINE_string('dec_interaction', 'add', '')
 flags.DEFINE_integer('T_layer_norm', 1, '')
 flags.DEFINE_integer('dec_style', 1, '')
 # Save options.
@@ -56,8 +55,6 @@ flags.DEFINE_float('kl_start_weight', 1e-5, '')
 flags.DEFINE_float('kl_weight', 1.0, '')
 flags.DEFINE_float('kl_decay_rate', 0.99995, '')
 flags.DEFINE_float('kl_tolerance', 0.01, '')
-flags.DEFINE_integer('cycle_model', 1, '')
-flags.DEFINE_float('cycle_weight', 5.0, '')
 #
 flags.DEFINE_float('learning_rate', 0.0001, '')
 flags.DEFINE_float('weight_decay', 1e-12, '')
@@ -88,14 +85,15 @@ def main(_):
       ###########
       ## model ##
       ###########
-      model = MTVAEPredModel(FLAGS)
+      model = VAEPredModel(FLAGS)
       ##########
       ## data ##
       ##########
-      train_data = model.get_inputs(
-        FLAGS.inp_dir, FLAGS.dataset_name, 'train',
-        FLAGS.batch_size, is_training=True)
-      inputs = model.preprocess(train_data, is_training=True)
+      with tf.device('/cpu:0'):
+        train_data = model.get_inputs(
+          FLAGS.inp_dir, FLAGS.dataset_name, 'train',
+          FLAGS.batch_size, is_training=True)
+        inputs = model.preprocess(train_data, is_training=True)
       ##############
       ## model_fn ##
       ##############
@@ -151,4 +149,5 @@ def main(_):
 
 if __name__ == '__main__':
   app.run()
+
 

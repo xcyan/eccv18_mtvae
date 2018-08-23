@@ -3,8 +3,8 @@
 import tensorflow as tf
 
 from factory_utils import get_network, get_rnn_cell
-from seq_factory_utils import get_singleseq_encoding_model
-from seq_factory_utils import get_seq_decoding_model
+from h36m_factory_utils import get_singleseq_encoding_model
+from h36m_factory_utils import get_seq_decoding_model
 import catvae_latent_encoder
 import catvae_latent_decoder
 import numpy as np
