@@ -3,7 +3,7 @@
 import tensorflow as tf
 
 from factory_utils import *
-from h36m_factory_utils import get_seq_encoding_model, \
+from h36m_seq_utils import get_seq_encoding_model, \
   get_seq_decoding_model, get_cycle_decoding_model
 import mtvae_latent_encoder
 import mtvae_latent_decoder
