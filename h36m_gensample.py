@@ -20,27 +20,27 @@ from H36M_modelfile import *
 flags = tf.app.flags
 slim = tf.contrib.slim
 
-flags.DEFINE_string('inp_dir', '/mnt/brain6/scratch/xcyan/experimental/gif2gif/workspace/', '')
+flags.DEFINE_string('inp_dir', 'workspace/', '')
 flags.DEFINE_string('dataset_name', 'Human3.6M', '')
-flags.DEFINE_integer('keypoint_dim', 32, '')
-flags.DEFINE_integer('img_size', 180, '')
+flags.DEFINE_string('model_version', 'MTVAE', '')
+flags.DEFINE_string('master', '', '')
 flags.DEFINE_string('checkpoint_dir', 'checkpoints/', '')
-flags.DEFINE_integer('batch_size', 5, '')
-#
 flags.DEFINE_integer('min_input_length', 16, '')
 flags.DEFINE_integer('max_input_length', 16, '')
 flags.DEFINE_integer('max_length', 64, '')
-flags.DEFINE_string('master', '', '')
+flags.DEFINE_integer('keypoint_dim', 32, '')
+flags.DEFINE_integer('img_size', 180, '')
+flags.DEFINE_integer('batch_size', 5, '')
+# model parameters.
 flags.DEFINE_string('enc_model', 'ln_lstm', '')
 flags.DEFINE_string('dec_model', 'ln_lstm', '')
 flags.DEFINE_integer('use_bidirection_lstm', 0, '')
 flags.DEFINE_integer('use_recurrent_dropout', 0, '')
 flags.DEFINE_float('recurrent_dropout_prob', 1.0, '')
-#
+# Sample parameters.
 flags.DEFINE_integer('use_prior', 1, '')
 flags.DEFINE_integer('sample_pdf', 1, '')
 flags.DEFINE_float('sample_temp', 0.1, '')
-flags.DEFINE_string('model_version', 'MTVAE', '')
 
 FLAGS = flags.FLAGS
 
@@ -187,7 +187,7 @@ def main(_):
     keypointClass = MODEL_TO_CLASS[params.model_version]
     model = keypointClass(params)
     scopes = MODEL_TO_SCOPE[params.model_version]
-    #
+
     eval_data = model.get_inputs_from_placeholder(
       dataset_size, params.batch_size)
     inputs = model.preprocess(
@@ -222,7 +222,7 @@ def main(_):
           [inputs['his_landmarks'], inputs['fut_landmarks'], outputs['fut_landmarks']],
           feed_dict={
             eval_data['landmarks']: curr_landmarks})
-        #
+
         batch_output = np.copy(pred_lms) * 2 - 1.0
         for run_id in xrange(params.batch_size):
           his_imgs = utils.visualize_h36m_skeleton_batch(
@@ -238,8 +238,7 @@ def main(_):
             vid_file, out_dict = run_visualization(video_proc_utils, log_dir, i, 
               'gt', his_imgs, fut_imgs)
             save_images(img_dir, i, 'gt', out_dict)
-            #raw_gif_list.append(vid_file)
-          #
+
           vid_file, out_dict = run_visualization(video_proc_utils, log_dir, i,
             params.model_version + '_%02d' % run_id, his_imgs, pred_imgs)
           save_images(img_dir, i, params.model_version + '_%02d' % run_id, out_dict)
