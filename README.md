@@ -1,4 +1,4 @@
-# MT-VAE for human motion synthesis
+# MT-VAE for Multimodal Human Motion Synthesis
 
 This is the code for ECCV 2018 paper [MT-VAE: Learning Motion Transformations to Generate Multimodal Human Dynamics](https://arxiv.org/abs/1808.04545) by Xinchen Yan, Akash Rastogi, Ruben Villegas, Kalyan Sunkavalli, Eli Shechtman, Sunil Hadap, Ersin Yumer, Honglak Lee.
 
