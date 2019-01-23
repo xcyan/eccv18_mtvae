@@ -32,16 +32,31 @@ bash demo_human36m_trainMTVAE.sh
 bash prep_human36m_model.sh
 ```
 
-## Motion Synthesis Using Pre-trained Model
+## Motion Synthesis Using Pre-trained MT-VAE Model
 * Please run the following command to generate multiple diverse human motion given initial motion.
 ```
 bash demo_human36m_inferMTVAE.sh
 ```
 
-## Motion Analogy-making Using Pre-trained Model
+## Motion Analogy-making Using Pre-trained MT-VAE Model
 * Please run the following command to execute motion analogy-making.
 ```
 bash demo_human36m_analogyMTVAE.sh
+```
+## Hierchical Video Synthesis Using Pre-trained Image Generation Model
+* Please download [full Human3.6M videos](http://vision.imar.ro/human3.6m/description.php) into the workspace/Human3.6M/ folder.
+* We use a pre-trained model from the [ICML 2017 HierchVid Repository](https://github.com/rubenvillegas/icml2017hierchvid). Please run the following command to run image synthesis given generated motion sequence.
+```
+CUDA_VISIBLE_DEVICE=0 python h36m_hierach_gensample.py
+```
+* Disclaimer: Please double check the license in that repository and cite the following paper when use:
+```
+@inproceedings{villegas17hierchvid,
+  title={{Learning to Generate Long-term Future via Hierarchical Prediction}},
+  author={Villegas, Ruben and Yang, Jimei and Zou, Yuliang and Sohn, Sungryull and Lin, Xunyu and Lee, Honglak},
+  booktitle=ICML,
+  year={2017}
+}
 ```
 
 ## Citation
