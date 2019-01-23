@@ -58,9 +58,11 @@ If you find this useful, please cite our work as follows:
 ```
 
 ## Acknowledgements
-We would like to thank the amazing TensorFlow developers and the open-sourcing community. Our implementation has especially been benefited from the following excellent repositories:
+We would like to thank the amazing developers and the open-sourcing community. Our implementation has especially been benefited from the following excellent repositories:
 * Attribute2Image: [https://github.com/xcyan/eccv16_attr2img](https://github.com/xcyan/eccv16_attr2img)
 * TensorFlow-PTN: [https://github.com/tensorflow/models/tree/master/research/ptn](https://github.com/tensorflow/models/tree/master/research/ptn)
+* VideoGAN: [https://github.com/cvondrick/videogan](https://github.com/cvondrick/videogan)
+* MoCoGAN: [https://github.com/sergeytulyakov/mocogan](https://github.com/sergeytulyakov/mocogan)
 * HierchVid: [https://github.com/rubenvillegas/icml2017hierchvid](https://github.com/rubenvillegas/icml2017hierchvid)
 * Sketch-RNN: [https://github.com/tensorflow/magenta/tree/master/magenta/models/sketch_rnn](https://github.com/tensorflow/magenta/tree/master/magenta/models/sketch_rnn)
 
