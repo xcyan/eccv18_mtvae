@@ -44,7 +44,7 @@ bash demo_human36m_inferMTVAE.sh
 bash demo_human36m_analogyMTVAE.sh
 ```
 
-# Citation
+## Citation
 If you find this useful, please cite our work as follows:
 ```
 @inproceedings{yan2018mt,
@@ -57,7 +57,7 @@ If you find this useful, please cite our work as follows:
 }
 ```
 
-# Acknowledgements
+## Acknowledgements
 We would like to thank the amazing TensorFlow developers and the open-sourcing community. Our implementation has especially been benefited from the following excellent repositories:
 * Attribute2Image: [https://github.com/xcyan/eccv16_attr2img](https://github.com/xcyan/eccv16_attr2img)
 * TensorFlow-PTN: [https://github.com/tensorflow/models/tree/master/research/ptn](https://github.com/tensorflow/models/tree/master/research/ptn)
