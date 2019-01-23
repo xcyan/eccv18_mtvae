@@ -49,15 +49,8 @@ bash demo_human36m_analogyMTVAE.sh
 ```
 CUDA_VISIBLE_DEVICE=0 python h36m_hierach_gensample.py
 ```
-* Disclaimer: Please double check the license in that repository and cite the following paper when use:
-```
-@inproceedings{villegas17hierchvid,
-  title={{Learning to Generate Long-term Future via Hierarchical Prediction}},
-  author={Villegas, Ruben and Yang, Jimei and Zou, Yuliang and Sohn, Sungryull and Lin, Xunyu and Lee, Honglak},
-  booktitle=ICML,
-  year={2017}
-}
-```
+* Disclaimer: Please double check the license in that repository and cite [the paper](https://arxiv.org/abs/1704.05831) when use.
+
 
 ## Citation
 If you find this useful, please cite our work as follows:
