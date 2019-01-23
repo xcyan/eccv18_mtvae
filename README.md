@@ -45,7 +45,7 @@ bash demo_human36m_analogyMTVAE.sh
 ```
 ## Hierchical Video Synthesis Using Pre-trained Image Generation Model
 * Please download [full Human3.6M videos](http://vision.imar.ro/human3.6m/description.php) into the workspace/Human3.6M/ folder.
-* We use a pre-trained model from the [ICML 2017 HierchVid Repository](https://github.com/rubenvillegas/icml2017hierchvid). Please run the following command to run image synthesis given generated motion sequence.
+* We use a pre-trained model from the [ICML 2017 HierchVid Repository](https://github.com/rubenvillegas/icml2017hierchvid). Please run the following command for image synthesis given generated motion sequence.
 ```
 CUDA_VISIBLE_DEVICE=0 python h36m_hierach_gensample.py
 ```
