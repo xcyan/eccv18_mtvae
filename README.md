@@ -65,4 +65,7 @@ We would like to thank the amazing developers and the open-sourcing community. O
 * MoCoGAN: [https://github.com/sergeytulyakov/mocogan](https://github.com/sergeytulyakov/mocogan)
 * HierchVid: [https://github.com/rubenvillegas/icml2017hierchvid](https://github.com/rubenvillegas/icml2017hierchvid)
 * Sketch-RNN: [https://github.com/tensorflow/magenta/tree/master/magenta/models/sketch_rnn](https://github.com/tensorflow/magenta/tree/master/magenta/models/sketch_rnn)
+* VRNN: [https://github.com/jych/nips2015_vrnn](https://github.com/jych/nips2015_vrnn)
+* SVG: [https://github.com/edenton/svg](https://github.com/edenton/svg)
+
 
