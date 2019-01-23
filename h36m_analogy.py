@@ -17,7 +17,7 @@ from H36M_modelfile import *
 flags = tf.app.flags
 slim = tf.contrib.slim
 
-flags.DEFINE_string('inp_dir', '/mnt/brain6/scratch/xcyan/experimental/gif2gif/workspace/', '')
+flags.DEFINE_string('inp_dir', 'workspace/', '')
 flags.DEFINE_string('dataset_name', 'Human3.6M', '')
 flags.DEFINE_string('model_version', 'MTVAE', '')
 flags.DEFINE_string('checkpoint_dir', 'checkpoints/', '')
