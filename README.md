@@ -49,7 +49,7 @@ bash demo_human36m_analogyMTVAE.sh
 ```
 CUDA_VISIBLE_DEVICE=0 python h36m_hierach_gensample.py
 ```
-* Disclaimer: Please double check the license in that repository and cite [the paper](https://arxiv.org/abs/1704.05831) when use.
+* Disclaimer: Please double check the license in that repository and cite [HierchVid paper](https://arxiv.org/abs/1704.05831) when use.
 
 
 ## Citation
