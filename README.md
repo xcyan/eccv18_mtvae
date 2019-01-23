@@ -14,3 +14,28 @@ MT-VAE requires or works with
 ## Installing Dependency
 * Install [TensorFlow](https://www.tensorflow.org/)
 * Note: this implementation has been tested with [TensorFlow 1.3](https://www.tensorflow.org/versions/r1.3/).
+
+## Data Preprocessing.
+* For Human3.6M dataset, please run the script to download the pre-processed dataset
+```
+./prep_human36m_joints.sh
+```
+* Disclaimer: Please check the license of [Human3.6M dataset](http://vision.imar.ro/human3.6m/description.php) if you download this preprocessed version.
+
+## Training (MT-VAE)
+* If you want to train the MT-VAE human motion generator, please run the following script (usually it takes 1 day with a single Titan GPU).
+```
+./demo_human36m_trainMTVAE.sh
+```
+
+## Motion Synthesis Using Pre-trained Model.
+* Please run the following command to generate multiple diverse human motion given initial motion.
+```
+./demo_human36m_inferMTVAE.sh
+```
+
+## Motion Analogy-making Using Pre-trained Model.
+* Please run the following command to execute motion analogy-making.
+```
+./demo_human36m_analogyMTVAE.sh
+```
