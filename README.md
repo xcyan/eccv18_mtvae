@@ -15,7 +15,7 @@ MT-VAE requires or works with
 * Install [TensorFlow](https://www.tensorflow.org/)
 * Note: this implementation has been tested with [TensorFlow 1.3](https://www.tensorflow.org/versions/r1.3/).
 
-## Data Preprocessing.
+## Data Preprocessing
 * For Human3.6M dataset, please run the script to download the pre-processed dataset
 ```
 bash prep_human36m_joints.sh
@@ -32,13 +32,13 @@ bash demo_human36m_trainMTVAE.sh
 bash prep_human36m_model.sh
 ```
 
-## Motion Synthesis Using Pre-trained Model.
+## Motion Synthesis Using Pre-trained Model
 * Please run the following command to generate multiple diverse human motion given initial motion.
 ```
 bash demo_human36m_inferMTVAE.sh
 ```
 
-## Motion Analogy-making Using Pre-trained Model.
+## Motion Analogy-making Using Pre-trained Model
 * Please run the following command to execute motion analogy-making.
 ```
 bash demo_human36m_analogyMTVAE.sh
