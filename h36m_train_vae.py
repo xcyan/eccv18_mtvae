@@ -13,7 +13,7 @@ flags = tf.app.flags
 slim = tf.contrib.slim
 
 flags.DEFINE_string('inp_dir', 'workspace/', 'Directory path containing the input data.')
-flags.DEFINE_string('dataset_name', None, 'Name of the dataset that is to be used for training or evaluation.')
+flags.DEFINE_string('dataset_name', 'Human3.6M', 'Name of the dataset that is to be used for training or evaluation.')
 flags.DEFINE_integer('keypoint_dim', 32, 'Number of the human joints.')
 flags.DEFINE_integer('batch_size', 256, 'Batch size for training.')
 flags.DEFINE_integer('min_input_length', 10, 'Minimum number of frames loaded as initial motion.')
