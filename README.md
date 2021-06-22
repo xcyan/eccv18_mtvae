@@ -16,7 +16,7 @@ MT-VAE requires or works with
 * Note: this implementation has been tested with [TensorFlow 1.3](https://www.tensorflow.org/versions/r1.3/).
 
 ## Data Preprocessing
-* For Human3.6M dataset, please run the script to download the pre-processed dataset
+* For Human3.6M dataset, please download the [pre-processed dataset](https://drive.google.com/file/d/1aVbJaLQNEe2VFoioXG6QcckSVxMRTCRJ/view?usp=sharing).
 ```
 bash prep_human36m_joints.sh
 ```
