@@ -1,2 +1,0 @@
-mkdir workspace
-mkdir checkpoints
